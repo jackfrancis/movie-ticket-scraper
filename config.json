@@ -12,18 +12,15 @@
     {
       "name": "El Capitan Home Page",
       "url": "https://elcapitantheatre.com/",
-      "searchFor": [
-        "star wars",
-        "force awakens"
-      ]
-    },
-    {
-      "name": "El Capitan Coming Soon",
-      "url": "https://elcapitantheatre.com/events/coming_soon",
-      "searchFor": [
-        "star wars",
-        "force awakens"
-      ]
+      "jquery": {
+        "query": "h6.subheader:contains('STAR WARS')",
+        "chains": [
+          {
+            "method": "siblings",
+            "query": ".buy"
+          }
+        ]
+      }
     },
     {
       "name": "Arclight Hollywood",
@@ -36,6 +33,22 @@
     {
       "name": "Arclight Hollywood Coming Soon",
       "url": "https://www.arclightcinemas.com/movies/coming-soon/",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ]
+    },
+    {
+      "name": "Chinese Theatre December 17 2015 Tickets",
+      "url": "http://www.tclchinesetheatres.com/tickets-showtimes/?date=12%2F17%2F2015",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ]
+    },
+    {
+      "name": "Chinese Theatre Coming Soon",
+      "url": "http://www.tclchinesetheatres.com/coming-soon/",
       "searchFor": [
         "star wars",
         "force awakens"

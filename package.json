@@ -9,6 +9,7 @@
   "author": "Jack Francis",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^0.19.0",
     "connect-timeout": "^1.7.0",
     "express": "^4.0.0",
     "mocha": "^2.3.3",

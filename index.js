@@ -2,7 +2,9 @@
 
 var config = require('./config.json'), // config.json-sourced configuration
     express = require('express'),
+    http = require('http'),
     https = require('https'),
+    cheerio = require('cheerio'),
     app = express(),
     timeout = require('connect-timeout'),
     router = express.Router(),
@@ -43,9 +45,13 @@ function scrape (res) {
       pages = getPageScraperConfigAray();
 
   pages.forEach(function (pageConfig) {
-    var request = https.request(pageConfig.url, function (backEndResponse) {
-      httpHtmlResponse(backEndResponse, res, pageConfig, pages.length, requested, response);
-    });
+    var request = pageConfig.url.indexOf('https\:\/\/') !== -1 ?
+      https.request(pageConfig.url, function (backEndResponse) {
+          httpHtmlResponse(backEndResponse, res, pageConfig, pages.length, requested, response);
+      }) :
+      http.request(pageConfig.url, function (backEndResponse) {
+        httpHtmlResponse(backEndResponse, res, pageConfig, pages.length, requested, response);
+      });
 
     request.on('error', function (err) {
       console.log('got error on HTTPS request!');
@@ -74,13 +80,25 @@ function httpHtmlResponse (httpResponse, apiResponse, pageConfig, numRequests, r
   });
 
   httpResponse.on('end', function () {
+    var $, query; // for jquery
     requested.push(pageConfig.url);
     var response = {
       name: pageConfig.name
     };
-    response.found = pageConfig.searchFor.some(function (matchString) {
-      return hasMovieReference(data, matchString)
-    });
+    if (pageConfig.searchFor) {
+      response.found = pageConfig.searchFor.some(function (matchString) {
+        return hasMovieReference(data, matchString)
+      });
+    } else if (pageConfig.jquery) {
+      $ = cheerio.load(data);
+      query = $(pageConfig.jquery.query);
+      if (pageConfig.jquery.chains) {
+        pageConfig.jquery.chains.forEach(function (chain) {
+          query = query[chain.method](chain.query);
+        });
+      }
+      response.found = query.html();
+    }
     if (response.found) {
       sendAlert(pageConfig);
     }
@@ -103,9 +121,13 @@ function httpHtmlResponse (httpResponse, apiResponse, pageConfig, numRequests, r
  */
 function sendAlert (pageConfig) {
   var alertMessage = '';
-  pageConfig.searchFor.forEach(function (searchString) {
-    alertMessage += searchString + ' ';
-  });
+  if (pageConfig.searchFor) {
+    pageConfig.searchFor.forEach(function (searchString) {
+      alertMessage += searchString + ' ';
+    });
+  } else if (pageConfig.jquery) {
+    alertMessage += 'jquery search ';
+  }
   alertMessage += 'found! at \n' + pageConfig.url;
   config.twilio.destinationNumbers.forEach(function (smsNumber) {
     twilio.sendMessage({
@@ -145,7 +167,8 @@ function getPageScraperConfigAray () {
     configArray.push({
       name: pageConfig.name,
       url: pageConfig.url,
-      searchFor: pageConfig.searchFor
+      searchFor: pageConfig.searchFor,
+      jquery: pageConfig.jquery
     })
   });
 
