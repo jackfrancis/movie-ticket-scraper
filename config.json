@@ -1,0 +1,45 @@
+{
+  "frequency": 1,
+  "twilio": {
+    "ACCOUNT_SID": "*****",
+    "AUTH_TOKEN": "*****",
+    "twilioNumber": "*****",
+    "destinationNumbers": [
+      "*****"
+    ]
+  },
+  "pages": [
+    {
+      "name": "El Capitan Home Page",
+      "url": "https://elcapitantheatre.com/",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ]
+    },
+    {
+      "name": "El Capitan Coming Soon",
+      "url": "https://elcapitantheatre.com/events/coming_soon",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ]
+    },
+    {
+      "name": "Arclight Hollywood",
+      "url": "https://www.arclightcinemas.com/en/locations/los-angeles/hollywood/showtimes?origin=Hollywood",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ]
+    },
+    {
+      "name": "Arclight Hollywood Coming Soon",
+      "url": "https://www.arclightcinemas.com/movies/coming-soon/",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ]
+    }
+  ]
+}

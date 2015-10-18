@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "version": "0.0.0",
+  "description": "Express Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec test/index.js"
+  },
+  "author": "Jack Francis",
+  "license": "ISC",
+  "dependencies": {
+    "connect-timeout": "^1.7.0",
+    "express": "^4.0.0",
+    "mocha": "^2.3.3",
+    "really-need": "^1.6.3",
+    "supertest": "^1.1.0",
+    "twilio": "^2.5.1"
+  }
+}
