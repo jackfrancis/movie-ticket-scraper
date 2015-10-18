@@ -128,7 +128,7 @@ function sendAlert (pageConfig) {
   } else if (pageConfig.jquery) {
     alertMessage += 'jquery search ';
   }
-  alertMessage += 'found! at \n' + pageConfig.url;
+  alertMessage += 'found! at \n' + (pageConfig.actionUrl ? pageConfig.actionUrl : pageConfig.url);
   config.twilio.destinationNumbers.forEach(function (smsNumber) {
     twilio.sendMessage({
       to: smsNumber,
@@ -167,6 +167,7 @@ function getPageScraperConfigAray () {
     configArray.push({
       name: pageConfig.name,
       url: pageConfig.url,
+      actionUrl: pageConfig.actionUrl,
       searchFor: pageConfig.searchFor,
       jquery: pageConfig.jquery
     })

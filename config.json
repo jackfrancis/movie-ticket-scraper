@@ -53,6 +53,47 @@
         "star wars",
         "force awakens"
       ]
+    },
+    {
+      "name": "Chinese Theatre Imax via Fandango for Dec 17",
+      "url": "http://www.fandango.com/tclchinesetheatres+imax_aaacd/theaterpage",
+      "jquery": {
+        "query": "div.date-month:contains('Dec')",
+        "chains": [
+          {
+            "method": "siblings",
+            "query": ":contains('17')"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Arclight Hollywood via Fandango for Dec 17",
+      "url": "http://www.fandango.com/arclighthollywood_aaqiz/theaterpage",
+      "actionUrl": "https://www.arclightcinemas.com/en/locations/los-angeles/hollywood/showtimes?origin=Hollywood",
+      "jquery": {
+        "query": "div.date-month:contains('Dec')",
+        "chains": [
+          {
+            "method": "siblings",
+            "query": ":contains('17')"
+          }
+        ]
+      }
+    },
+    {
+      "name": "El Capitan via Fandango for Dec 17",
+      "url": "http://www.fandango.com/pacificelcapitan_aacon/theaterpage",
+      "actionUrl": "http://www.fandango.com/tclchinesetheatres+imax_aaacd/theaterpage?date=12/17/2015",
+      "jquery": {
+        "query": "div.date-month:contains('Dec')",
+        "chains": [
+          {
+            "method": "siblings",
+            "query": ":contains('17')"
+          }
+        ]
+      }
     }
   ]
 }
