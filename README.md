@@ -29,5 +29,5 @@ $ node index.js
 #
 # in another terminal window/tab
 #
-$ curl http://localhost:8000/O6pKa79XTaKDyDv5vGH51A
+$ curl http://localhost:8000/
 ```
