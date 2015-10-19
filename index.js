@@ -9,7 +9,8 @@ var config = require('./config.json'), // config.json-sourced configuration
     timeout = require('connect-timeout'),
     router = express.Router(),
     twilio = require('twilio')(config.twilio.ACCOUNT_SID, config.twilio.AUTH_TOKEN),
-    server;
+    server,
+    found = {}; // key/value store to keep a session record of found page matches
 
 router.get('/', function (req, res) {
   if (req.url.indexOf('favico') === -1) {
@@ -100,7 +101,10 @@ function httpHtmlResponse (httpResponse, apiResponse, pageConfig, numRequests, r
       response.found = query.html();
     }
     if (response.found) {
-      sendAlert(pageConfig);
+      if (!found[response.name]) {
+        sendAlert(pageConfig);
+        found[response.name] = true;
+      }
     }
     finalResponse.push(response);
     if (numRequests === requested.length) {
