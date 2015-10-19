@@ -90,7 +90,8 @@ function httpHtmlResponse (httpResponse, apiResponse, pageConfig, numRequests, r
       response.found = pageConfig.searchFor.some(function (matchString) {
         return hasMovieReference(data, matchString)
       });
-    } else if (pageConfig.jquery) {
+    }
+    if (pageConfig.jquery && !response.found) {
       $ = cheerio.load(data);
       query = $(pageConfig.jquery.query);
       if (pageConfig.jquery.chains) {

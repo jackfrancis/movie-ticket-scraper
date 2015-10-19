@@ -46,6 +46,10 @@
     {
       "name": "Arclight Hollywood Coming Soon",
       "url": "https://www.arclightcinemas.com/movies/coming-soon/",
+      "searchFor": [
+        "star wars",
+        "force awakens"
+      ],
       "jquery": {
         "query": "div#large-slider a[href='https://www.arclightcinemas.com/en/movies/coming-soon?promo=spotlightM2'] img[src*='star']",
         "howMany": 0
