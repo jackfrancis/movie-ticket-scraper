@@ -10,10 +10,36 @@
   },
   "pages": [
     {
+      "name": "El Capitan Marathon Tickets",
+      "url": "https://elcapitantheatre.com/",
+      "jquery": {
+        "query": "h6.subheader:contains('STAR WARS MARATHON EVENT')",
+        "chains": [
+          {
+            "method": "siblings",
+            "query": ".buy"
+          }
+        ]
+      }
+    },
+    {
+      "name": "El Capitan Single Showing Tickets",
+      "url": "https://elcapitantheatre.com/",
+      "jquery": {
+        "query": "h6.subheader:contains('THE FORCE AWAKENS')",
+        "chains": [
+          {
+            "method": "siblings",
+            "query": ".buy"
+          }
+        ]
+      }
+    },
+    {
       "name": "El Capitan Home Page",
       "url": "https://elcapitantheatre.com/",
       "jquery": {
-        "query": "h6.subheader:contains('STAR WARS')",
+        "query": "h6.subheader:contains('STAR WARS MARATHON EVENT')",
         "chains": [
           {
             "method": "siblings",
@@ -33,10 +59,10 @@
     {
       "name": "Arclight Hollywood Coming Soon",
       "url": "https://www.arclightcinemas.com/movies/coming-soon/",
-      "searchFor": [
-        "star wars",
-        "force awakens"
-      ]
+      "jquery": {
+        "query": "div#large-slider a[href='https://www.arclightcinemas.com/en/movies/coming-soon?promo=spotlightM2'] img[src*='star']",
+        "howMany": 0
+      }
     },
     {
       "name": "Chinese Theatre December 17 2015 Tickets",

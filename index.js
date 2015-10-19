@@ -98,7 +98,11 @@ function httpHtmlResponse (httpResponse, apiResponse, pageConfig, numRequests, r
           query = query[chain.method](chain.query);
         });
       }
-      response.found = query.html();
+      if (Number.isInteger(pageConfig.jquery.howMany)) {
+        response.found = query.length === pageConfig.jquery.howMany;
+      } else {
+        response.found = query.html();
+      }
     }
     if (response.found) {
       if (!found[response.name]) {
