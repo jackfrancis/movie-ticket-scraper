@@ -36,19 +36,6 @@
       }
     },
     {
-      "name": "El Capitan Home Page",
-      "url": "https://elcapitantheatre.com/",
-      "jquery": {
-        "query": "h6.subheader:contains('STAR WARS MARATHON EVENT')",
-        "chains": [
-          {
-            "method": "siblings",
-            "query": ".buy"
-          }
-        ]
-      }
-    },
-    {
       "name": "Arclight Hollywood",
       "url": "https://www.arclightcinemas.com/en/locations/los-angeles/hollywood/showtimes?origin=Hollywood",
       "searchFor": [
